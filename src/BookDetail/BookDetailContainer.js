@@ -1,7 +1,7 @@
 import React from "react";
 
 import BookDetail from "./BookDetail";
-import { useRemoteService } from "./hooks";
+import { useRemoteService } from "../hooks";
 
 const BookDetailContainer = ({ match }) => {
   const { data } = useRemoteService(
