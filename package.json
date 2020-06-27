@@ -19,7 +19,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "e2e": "cypress run",
-    "mock-server": "json-server --watch mock-server/db.json --port 8080"
+    "mock-server": "json-server --watch mock-server/books.json --port 8080"
   },
   "eslintConfig": {
     "extends": "react-app"
