@@ -1,11 +1,33 @@
-import React from "react";
-import { useRemoteService } from "../hooks";
+import React, { useState, useEffect } from "react";
+import { TextField } from "@material-ui/core";
 
+import { useRemoteService } from "../hooks";
 import BookList from "./BookList";
 
 const BookListContainer = () => {
-  const {data, loading, error} = useRemoteService('http://localhost:8080/books', []);
-  return <BookList books={data} loading={loading} error={error}/>;
+  const [term, setTerm] = useState('');
+  const { data, loading, error, setUrl } = useRemoteService(
+    "http://localhost:8080/books",
+    []
+  );
+
+  useEffect(() => {
+    setUrl(`http://localhost:8080/books?q=${term}`)
+  }, [term, setUrl]);
+
+  return (
+    <>
+      <TextField
+        label="Search"
+        value={term}
+        data-test="search"
+        onChange={(e) => setTerm(e.target.value)}
+        margin="normal"
+        variant="outlined"
+      />
+      <BookList books={data} loading={loading} error={error} />
+    </>
+  );
 };
 
 export default BookListContainer;
