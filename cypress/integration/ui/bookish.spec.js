@@ -20,12 +20,6 @@ describe("Bookish application", () => {
     );
   });
 
-  afterEach(() => {
-    return axios
-      .delete("http://localhost:8080/books?_cleanup=true")
-      .catch((err) => err);
-  });
-
   it("Visits the bookish", function () {
     cy.visit("http://localhost:3000/");
     cy.get('h2[data-test="heading"]').contains("Bookish");

@@ -43,4 +43,23 @@ describe("BookDetail", () => {
     const description = container.querySelector("p.book-description");
     expect(description.innerHTML).toEqual(props.book.name);
   });
+
+  it("Shows *more* link when description is too long", () => {
+    const props = {
+      book: {
+        name: "Refactoring",
+        description: "Refactoring is a controlled technique for improving the design of an existing code base. Its essence is applying a series of small behavior-preserving transformations, each of which 'too small to be worth doing'. However the cumulative effect of each of these transformations is quite significant. By doing them in small steps you reduce the risk of introducing errors.",
+      },
+    };
+
+    const { container } = render(<BookDetail {...props} />);
+
+    const link = container.querySelector("a.show-more");
+    const title = container.querySelector("p.book-description");
+
+    expect(link.innerHTML).toEqual("Show more");
+    expect(title.innerHTML).toEqual(
+      "Refactoring is a controlled technique for improving the design of an existing code base. Its essence is applying a series of small behavior-preserving transformations, each of which 'too small to be worth doing'. However the cumulative effect of each of these transformations is quite significant. By ...."
+    );
+  });
 });
