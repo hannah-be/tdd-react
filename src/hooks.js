@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-export const useRemoteService = (initialUrl, initial) => {
-    const [data, setData] = useState(initial);
+export const useRemoteService = (initialUrl, initialData) => {
+    const [data, setData] = useState(initialData);
     const [url, setUrl] = useState(initialUrl);
 
     const [loading, setLoading] = useState(false);
