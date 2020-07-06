@@ -3,7 +3,7 @@ import configureMockStore from "redux-mock-store";
 import thunk from "redux-thunk";
 
 import { setSearchTerm, fetchBooks } from "./actions";
-import * as types from "./types";
+import * as types from "../types";
 
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
@@ -66,9 +66,9 @@ describe("BookListContainer related actions", () => {
       .fn()
       .mockImplementation(() => Promise.resolve({ data: books }));
 
-    const store = mockStore({ books: [] });
+    const store = mockStore({ books: [], term: "domain" });
 
-    return store.dispatch(fetchBooks("domain")).then(() => {
+    return store.dispatch(fetchBooks()).then(() => {
       expect(axios.get).toHaveBeenCalledWith(
         "http://localhost:8080/books?q=domain"
       );
