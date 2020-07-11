@@ -4,7 +4,7 @@ import * as types from "../types";
 describe("Reducer", () => {
   it('Add the search term to state', () => {
     const term = 'domain';
-    const action = { type: types.SET_SEARCH_TERM, term };
+    const action = { type: types.SET_SEARCH_TERM, payload: { term } };
   
     const state = reducer([], action);
 

@@ -13,7 +13,7 @@ describe("BookListContainer related actions", () => {
     const term = "";
     const expected = {
       type: types.SET_SEARCH_TERM,
-      term,
+      payload: { term },
     };
     const action = setSearchTerm(term);
     expect(action).toEqual(expected);

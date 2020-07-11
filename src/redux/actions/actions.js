@@ -3,8 +3,8 @@ import axios from "axios";
 import * as types from '../types'
 
 export const setSearchTerm = (term) => {
-  return { type: types.SET_SEARCH_TERM, term };
-};
+  return {type: 'SET_SEARCH_TERM', payload: {term}}
+}
 
 export const fetchBooks = () => {
   return (dispatch, getState) => {
@@ -14,6 +14,6 @@ export const fetchBooks = () => {
       dispatch({ type: types.FETCH_BOOKS_SUCCESS, payload: res.data });
     }).catch((err) => {
         dispatch({type: types.FETCH_BOOKS_FAILED, err: err.message})
-      });
+    });
   };
 };

@@ -12,10 +12,4 @@ const BookDetailContainer = ({ match }) => {
   return <BookDetail book={data} />;
 };
 
-// const BookDetailContainer = ({match}) => {
-//   // fetchBookById(match.params.id) 
-//   // that will fetch data with `match.params.id`
-//   return (<BookDetail book={book}/>);
-// };
-
 export default BookDetailContainer;

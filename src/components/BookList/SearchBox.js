@@ -9,6 +9,7 @@ const SearchBox = ({ term, onSearch }) => {
       return onSearch(event);
     }
   };
+  
   return (
     <TextField
       label="Search"
