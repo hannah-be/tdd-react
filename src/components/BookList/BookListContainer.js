@@ -8,12 +8,12 @@ import BookList from "./BookList";
 import SearchBox from "./SearchBox";
 
 const BookListContainer = () => {
-  const [term, setTerm] = useState();
+  const [term] = useState();
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(actions.fetchBooks());
-  }, [dispatch]);
+  }, [term, dispatch]);
 
   const { books, loading, error } = useSelector(bookListSelector);
   const onSearch = (event) => {

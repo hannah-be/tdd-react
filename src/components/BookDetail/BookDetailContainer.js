@@ -1,15 +1,24 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
+import * as actions from "../../redux/actions/actions";
+import { bookDetailSelector } from "../../redux/selectors/selector";
 
 import BookDetail from "./BookDetail";
-import { useRemoteService } from "../../hooks";
 
-const BookDetailContainer = ({ match }) => {
-  const { data } = useRemoteService(
-    `http://localhost:8080/books/${match.params.id}`,
-    {}
+
+const BookDetailContainer = ({match}) => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(actions.fetchABook(match.params.id))
+  }, [match, dispatch]);
+
+  const { book, loading } = useSelector(bookDetailSelector);
+
+  return (
+    <BookDetail book={book} loading={loading}/>
   );
-
-  return <BookDetail book={data} />;
 };
 
 export default BookDetailContainer;
